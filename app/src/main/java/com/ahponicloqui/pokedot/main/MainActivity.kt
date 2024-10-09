@@ -1,4 +1,4 @@
-package com.ahponicloqui.pokedot
+package com.ahponicloqui.pokedot.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

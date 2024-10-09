@@ -9,6 +9,7 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        maven( "https://dl.bintray.com/sargunv/maven" )
     }
 }
 dependencyResolutionManagement {
