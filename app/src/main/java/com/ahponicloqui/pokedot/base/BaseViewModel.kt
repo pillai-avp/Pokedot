@@ -14,10 +14,17 @@ abstract class BaseViewModel<E> : ViewModel() {
     private val _uiEvent = MutableSharedFlow<E>()
     val uiEvent = _uiEvent.asSharedFlow()
 
+    init {
+        viewModelScope.launch {
+            uiEvent.collect {
+                handleEvent(it)
+            }
+        }
+    }
+
     fun sendEvent(event: E) {
         viewModelScope.launch {
             _uiEvent.emit(event)
-            handleEvent(event)
         }
     }
 

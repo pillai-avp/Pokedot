@@ -3,7 +3,8 @@ package com.ahponicloqui.pokedot.ui.screens.home
 import com.ahponicloqui.pokedot.model.Pokemon
 
 sealed interface ParentHomeUIEvent{
-
+    data object Random : ParentHomeUIEvent
+    data class SendToKids(val pokemonId: Int) : ParentHomeUIEvent
 }
 
 sealed interface ParentHomeViewState{

@@ -46,14 +46,20 @@ fun ParentHomeScreen(
             PokemonHighlightedInformation(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(paddingValues), value
+                    .padding(paddingValues), onClick = { event ->
+                    viewModel.sendEvent(event = event)
+                }, pokemon = value
             )
         }
     }
 }
 
 @Composable
-fun PokemonHighlightedInformation(modifier: Modifier = Modifier, pokemon: Pokemon) {
+fun PokemonHighlightedInformation(
+    modifier: Modifier = Modifier,
+    onClick: (ParentHomeUIEvent) -> Unit,
+    pokemon: Pokemon
+) {
     Column(modifier = modifier
         .padding(16.dp)
         .verticalScroll(rememberScrollState())) {
@@ -105,13 +111,13 @@ fun PokemonHighlightedInformation(modifier: Modifier = Modifier, pokemon: Pokemo
             Button(modifier = Modifier
                 .padding(end = 4.dp)
                 .weight(1f), onClick = {
-
+                onClick(ParentHomeUIEvent.Random)
             }) { Text(text = stringResource(R.string.random)) }
 
             Button(modifier = Modifier
                 .padding(start = 4.dp)
                 .weight(1f), onClick = {
-
+                onClick(ParentHomeUIEvent.SendToKids(pokemonId = pokemon.id))
             }) { Text(text = stringResource(R.string.send_to_kids)) }
         }
 
