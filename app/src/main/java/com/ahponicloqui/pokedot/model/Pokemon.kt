@@ -34,6 +34,8 @@ data class Pokemon(
     val moves: List<Move>,
     @SerialName("sprites")
     val sprites: Sprites,
+    @SerialName("species")
+    val species: Species,
     /*
     @SerialName("cries")
     val cries: Cries,

@@ -13,7 +13,6 @@ class ParentHomeViewModel(private val services: PokedotServices) :
 
     override fun handleEvent(event: ParentHomeUIEvent) {
         when (event) {
-
             else -> {}
         }
     }

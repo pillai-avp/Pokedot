@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Pokedot</string>
+    <string name="national_no">National No</string>
+    <string name="type">Type</string>
+    <string name="species">Species</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="pok_dex_data">Pokédex data</string>
+    <string name="abilities">Abilities</string>
+    <string name="send_to_kids">Send to Kids</string>
+    <string name="random">Random</string>
 </resources>
