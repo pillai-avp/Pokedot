@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pokedot"
         tools:targetApi="31">
+
         <activity
             android:name=".main.MainActivity"
             android:exported="true"
