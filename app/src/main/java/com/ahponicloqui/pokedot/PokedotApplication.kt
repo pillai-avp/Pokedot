@@ -1,7 +1,6 @@
 package com.ahponicloqui.pokedot
 
 import android.app.Application
-import android.util.Log
 import com.ahponicloqui.pokedot.common.commonModule
 import com.ahponicloqui.pokedot.ui.screens.home.homeModule
 import org.koin.android.ext.koin.androidContext

@@ -8,10 +8,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
-import com.ahponicloqui.pokedot.ui.PokedotNavController
-import org.koin.androidx.compose.koinViewModel
 import com.ahponicloqui.pokedot.common.screens.HandleResult
 import com.ahponicloqui.pokedot.model.Pokemon
+import com.ahponicloqui.pokedot.ui.PokedotNavController
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ParentHomeScreen(
