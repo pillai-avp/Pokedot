@@ -1,5 +1,6 @@
 [versions]
 agp = "8.7.0"
+coilCompose = "3.0.0-rc01"
 kotlin = "2.0.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -10,20 +11,27 @@ activityCompose = "1.9.2"
 composeBom = "2024.09.03"
 koin-bom = "4.0.0"
 firebaseBom = "33.4.0"
+loggingInterceptor = "4.12.0"
 retrofit = "2.11.0"
 okhttp = "4.12.0"
-kotlinxSerializationJson  = "1.7.3"
-kotlinxSerializationConverter  = "1.0.0"
+kotlinxSerializationJson = "1.7.3"
+kotlinxSerializationConverter = "1.0.0"
 googleServices = "4.4.2"
+timber = "5.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
+coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coilCompose" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose" }
+logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
@@ -33,13 +41,13 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 
 ## Firebase
-firebase-bom = {group = "com.google.firebase", name = "firebase-bom",  version.ref = "firebaseBom"}
-firebase-firestore = {group = "com.google.firebase", name = "firebase-firestore"}
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore" }
 ## Network
-retrofit = {group = "com.squareup.retrofit2", name = "retrofit",  version.ref ="retrofit"}
-okhttp = {group = "com.squareup.okhttp3", name = "okhttp", version.ref ="okhttp"}
-retrofit2-kotlinx-serialization-converter = {group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref ="kotlinxSerializationConverter"}
-kotlinx-serialization-json = {group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref ="kotlinxSerializationJson"}
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+retrofit2-kotlinx-serialization-converter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "kotlinxSerializationConverter" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 
 ## DI
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
@@ -47,11 +55,12 @@ koin-core = { module = "io.insert-koin:koin-core" }
 koin-android = { module = "io.insert-koin:koin-android" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose" }
 koin-androidx-compose-navigation = { module = "io.insert-koin:koin-androidx-compose-navigation" }
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-google-services = {id = "com.google.gms.google-services", version.ref = "googleServices"}
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 
