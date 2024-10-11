@@ -1,5 +1,6 @@
 package com.ahponicloqui.pokedot.ui.screens.home
 
+import android.net.Uri
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -40,16 +41,29 @@ fun ChildHomeScreen(
 
     }) { paddingValues ->
         val pokemons = viewModel.getPokemons().collectAsLazyPagingItems()
-        LazyColumn(modifier = Modifier
-            .padding(paddingValues)
-            .padding(16.dp)) {
+        LazyColumn(
+            modifier = Modifier
+                .padding(paddingValues)
+                .padding(16.dp)
+        ) {
             items(
                 items = pokemons,
                 key = { it.url }
             ) { pokemon ->
                 pokemon?.let {
                     PokemonListItem(it, onClick = { event ->
-                        pokedotNavController.navController.navigate(Destinations.CHILD_POKEMON_INFO_ROUTE)
+                        when (event) {
+
+                            is ChildHomeUIEvent.OnClickChildListItem -> {
+                                Uri.parse(event.url).lastPathSegment?.toInt()?.let { id ->
+                                    pokedotNavController.navController.navigate(
+                                        "${Destinations.CHILD_POKEMON_INFO_ROUTE}/${id}"
+                                    )
+                                }
+
+                            }
+                        }
+
                     })
                     HorizontalDivider()
                 }

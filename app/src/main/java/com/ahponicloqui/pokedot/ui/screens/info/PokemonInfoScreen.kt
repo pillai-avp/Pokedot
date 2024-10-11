@@ -34,13 +34,17 @@ import org.koin.androidx.compose.koinViewModel
 fun PokemonInfoScreen(
     modifier: Modifier = Modifier,
     pokedotNavController: PokedotNavController,
+    pokemonId: Int?,
     viewModel: PokemonInfoViewModel = koinViewModel()
 ) {
     Scaffold(modifier = modifier.fillMaxSize(), topBar = {
     }) { paddingValues ->
         val state = viewModel.viewState.collectAsStateWithLifecycle()
         LaunchedEffect(Unit) {
-            viewModel.sendEvent(PokemonInfoUIEvents.Opened(200))
+            pokemonId?.let {
+                viewModel.sendEvent(PokemonInfoUIEvents.Opened(it))
+            }
+
         }
         state.HandleResult { value ->
             PokemonInformation(
