@@ -10,25 +10,12 @@ import kotlinx.coroutines.flow.Flow
 
 class ChildHomeViewModel(private val services: PokedotServices) :
     BaseViewModel<ChildHomeUIEvent>() {
-    fun getPokemons(): Flow<PagingData<Result>> = services.pokemons().cachedIn(viewModelScope)
-
-    /*
-        private val _viewState = MutableStateFlow<NetworkResult<PagedResult>>(NetworkResult.Loading)
-        val viewState: StateFlow<NetworkResult<PagedResult>> = _viewState.asStateFlow()
-
-        init {
-            fetchPokemonList()
-        }
-
-        private fun fetchPokemonList(offset: Int = 0, limit: Int = 10) {
-            viewModelScope.launch {
-                services.fetchPokemonList(offset, limit).collect {
-                    _viewState.emit(it)
-                }
-            }
-        }*/
+    fun getPokemons(): Flow<PagingData<Result>> =
+        services.pagedPokemonList().cachedIn(viewModelScope)
 
     override fun handleEvent(event: ChildHomeUIEvent) {
-        super.handleEvent(event)
+        when (event) {
+            is ChildHomeUIEvent.OnClickChildListItem -> TODO()
+        }
     }
 }

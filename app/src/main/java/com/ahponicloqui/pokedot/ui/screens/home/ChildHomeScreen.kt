@@ -1,6 +1,8 @@
 package com.ahponicloqui.pokedot.ui.screens.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,12 +25,15 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.ahponicloqui.pokedot.R
 import com.ahponicloqui.pokedot.model.Result
+import com.ahponicloqui.pokedot.ui.Destinations
+import com.ahponicloqui.pokedot.ui.PokedotNavController
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
 
 @Composable
 fun ChildHomeScreen(
     modifier: Modifier = Modifier,
+    pokedotNavController: PokedotNavController,
     viewModel: ChildHomeViewModel = koinViewModel()
 ) {
     Scaffold(modifier = modifier.fillMaxSize(), topBar = {
@@ -42,8 +47,12 @@ fun ChildHomeScreen(
                 items = pokemons,
                 key = { it.url }
             ) { pokemon ->
-                PokemonListItem(pokemon)
-                HorizontalDivider()
+                pokemon?.let {
+                    PokemonListItem(it, onClick = { event ->
+                        pokedotNavController.navController.navigate(Destinations.CHILD_POKEMON_INFO_ROUTE)
+                    })
+                    HorizontalDivider()
+                }
             }
 
             when (val state = pokemons.loadState.refresh) {
@@ -88,7 +97,6 @@ fun ChildHomeScreen(
                             verticalArrangement = Arrangement.Center,
                         ) {
                             Text(text = stringResource(R.string.pagination_loading))
-
                             CircularProgressIndicator()
                         }
                     }
@@ -101,11 +109,18 @@ fun ChildHomeScreen(
 }
 
 @Composable
-private fun PokemonListItem(pokemon: Result?) {
-    Text(
-        modifier = Modifier
-            .padding(vertical = 30.dp),
-        textAlign = TextAlign.Left,
-        text = pokemon?.name?.capitalize(LocaleList.current) ?: "",
-    )
+private fun PokemonListItem(pokemon: Result, onClick: (ChildHomeUIEvent) -> Unit) {
+    Box(modifier = Modifier
+        .fillMaxWidth()
+        .clickable {
+            onClick(ChildHomeUIEvent.OnClickChildListItem(pokemon.url))
+        }) {
+        Text(
+            modifier = Modifier
+                .padding(vertical = 30.dp),
+            textAlign = TextAlign.Left,
+            text = pokemon.name.capitalize(LocaleList.current),
+        )
+    }
+
 }

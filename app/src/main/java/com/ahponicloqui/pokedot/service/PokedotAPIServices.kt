@@ -16,23 +16,30 @@ import java.util.Date
 import kotlin.random.Random
 
 interface PokedotServices {
-    val todaysPokemon: SharedFlow<NetworkResult<Pokemon>>
-    suspend fun getRandomPokemon()
-    fun pokemons(): Flow<PagingData<Result>>
+    val pokemon: SharedFlow<NetworkResult<Pokemon>>
+    suspend fun getTodaysPokemon()
+    suspend fun getPokemonWithID(id: Int)
+    fun pagedPokemonList(): Flow<PagingData<Result>>
 }
 
 class PokedotServiceHandler(private val repository: PokedotRepository) : PokedotServices {
-    private val _todaysPokemon = MutableSharedFlow<NetworkResult<Pokemon>>()
-    override val todaysPokemon: SharedFlow<NetworkResult<Pokemon>> = _todaysPokemon.asSharedFlow()
+    private val _pokemon = MutableSharedFlow<NetworkResult<Pokemon>>()
+    override val pokemon: SharedFlow<NetworkResult<Pokemon>> = _pokemon.asSharedFlow()
     private val random: Random = Random(Date().time)
 
-    override suspend fun getRandomPokemon() {
+    override suspend fun getTodaysPokemon() {
         repository.getPokemon(id = random.nextInt(1..1036)).collect {
-            _todaysPokemon.emit(it)
+            _pokemon.emit(it)
         }
     }
 
-    override fun pokemons() = Pager(
+    override suspend fun getPokemonWithID(id: Int) {
+        repository.getPokemon(id).collect {
+            _pokemon.emit(it)
+        }
+    }
+
+    override fun pagedPokemonList() = Pager(
         config = PagingConfig(
             pageSize = 20,
         ),

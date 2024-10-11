@@ -13,4 +13,6 @@ sealed interface ParentHomeViewState {
     data class Success(val pokemon: Pokemon) : ParentHomeViewState
 }
 
-sealed interface ChildHomeUIEvent
+sealed interface ChildHomeUIEvent {
+    data class OnClickChildListItem(val url: String) : ChildHomeUIEvent
+}

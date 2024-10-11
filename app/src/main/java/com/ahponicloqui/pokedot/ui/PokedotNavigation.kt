@@ -14,6 +14,7 @@ object Destinations{
     const val PARENT_HOME_ROUTE = "parent-home"
     const val LOGIN_ROUTE = "login"
     const val CHILD_HOME_ROUTE = "child-home"
+    const val CHILD_POKEMON_INFO_ROUTE = "child-pokemon_info"
 }
 
 

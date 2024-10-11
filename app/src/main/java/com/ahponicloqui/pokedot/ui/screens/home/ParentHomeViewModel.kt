@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class ParentHomeViewModel(private val services: PokedotServices) :
     BaseViewModel<ParentHomeUIEvent>() {
-    val viewState: StateFlow<NetworkResult<Pokemon>> = services.todaysPokemon.asState(
+    val viewState: StateFlow<NetworkResult<Pokemon>> = services.pokemon.asState(
         NetworkResult.Loading)
 
     init {
@@ -19,7 +19,7 @@ class ParentHomeViewModel(private val services: PokedotServices) :
 
     private fun getRandomPokemon() {
         viewModelScope.launch {
-            services.getRandomPokemon()
+            services.getTodaysPokemon()
         }
     }
 
