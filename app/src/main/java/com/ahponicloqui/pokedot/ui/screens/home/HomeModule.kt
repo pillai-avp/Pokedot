@@ -5,4 +5,5 @@ import org.koin.dsl.module
 
 val homeModule = module {
     viewModelOf(::ParentHomeViewModel)
+    viewModelOf(::ChildHomeViewModel)
 }

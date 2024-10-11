@@ -1,6 +1,6 @@
 package com.ahponicloqui.pokedot.api
 
-import com.ahponicloqui.pokedot.model.PagedResult
+import com.ahponicloqui.pokedot.model.PagedPokemonList
 import com.ahponicloqui.pokedot.model.Pokemon
 import retrofit2.Response
 import retrofit2.http.GET
@@ -17,5 +17,5 @@ interface PokedotAPI {
     suspend fun getPokemonList(
         @Query("offset") offset: Int,
         @Query("limit") limit: Int
-    ): Response<PagedResult>
+    ): PagedPokemonList
 }

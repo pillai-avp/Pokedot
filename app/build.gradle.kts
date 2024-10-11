@@ -86,4 +86,6 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
+    implementation("androidx.paging:paging-compose:1.0.0-alpha17")
+    implementation("androidx.paging:paging-runtime:3.1.1")
 }

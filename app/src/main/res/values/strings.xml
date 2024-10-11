@@ -9,4 +9,6 @@
     <string name="abilities">Abilities</string>
     <string name="send_to_kids">Send to Kids</string>
     <string name="random">Random</string>
+    <string name="refresh_loading">Refresh Loading</string>
+    <string name="pagination_loading">Pagination Loading</string>
 </resources>

@@ -16,6 +16,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.ahponicloqui.pokedot.ui.Destinations
 import com.ahponicloqui.pokedot.ui.rememberPokedotNavController
+import com.ahponicloqui.pokedot.ui.screens.home.ChildHomeScreen
 import com.ahponicloqui.pokedot.ui.screens.home.ParentHomeScreen
 import com.ahponicloqui.pokedot.ui.screens.login.LoginScreen
 import com.ahponicloqui.pokedot.ui.theme.PokedotTheme
@@ -40,6 +41,10 @@ fun PokedotApp() {
                     }
                     composable(Destinations.PARENT_HOME_ROUTE) {
                         ParentHomeScreen(modifier = Modifier, pokedotNavController)
+                    }
+
+                    composable(Destinations.CHILD_HOME_ROUTE) {
+                        ChildHomeScreen(modifier = Modifier)
                     }
                 }
             }

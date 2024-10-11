@@ -38,7 +38,7 @@ fun ParentHomeScreen(
     viewModel: ParentHomeViewModel = koinViewModel()
 ) {
 
-    Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
+    Scaffold(modifier = modifier.fillMaxSize(), topBar = {
 
     }) { paddingValues ->
         val state = viewModel.viewState.collectAsStateWithLifecycle()
