@@ -120,7 +120,6 @@ fun PokemonHighlightedInformation(
                 onClick(ParentHomeUIEvent.SendToKids(pokemonId = pokemon.id))
             }) { Text(text = stringResource(R.string.send_to_kids)) }
         }
-
     }
 }
 
